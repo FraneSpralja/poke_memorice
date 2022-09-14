@@ -1,0 +1,69 @@
+.row {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    gap: 5px;
+    margin: auto;
+}
+
+.card.memocard {
+    text-align: center;
+    height: 150px;
+    width: 150px;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150px;
+    cursor: pointer;
+    border-radius: 7px;
+    background: #000;
+}
+
+.card-uno, .card-dos {
+    background: #f2f2f2 !important;
+}
+
+.match {
+    background: red !important;
+    pointer-events: none;
+    cursor: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #00000062;
+    display: flex;
+}
+
+.mensajeDiv {
+    margin: auto;
+    flex: 0 0 30%;
+    text-align: center;
+    padding: 12px;
+    background: #069106;
+    height: 130px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 2px solid #025e02;
+}
+
+p.mensaje.win {
+    font-family: sans-serif;
+    color: #ccc;
+    font-size: 25px;
+}
+
+button.btn-close {
+    padding: 12px 18px;
+}
