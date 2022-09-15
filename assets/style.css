@@ -85,3 +85,9 @@ p.mensaje.win {
 button.btn-close {
     padding: 12px 18px;
 }
+
+@media (orientation: landscape) and (max-width: 850px) {
+    .row {
+        width: 80%;
+    }
+}
