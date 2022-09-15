@@ -91,3 +91,14 @@ button.btn-close {
         width: 80%;
     }
 }
+
+@media (orientation: portrait) and (max-width: 500px) {
+    .row {
+        width: 95%;
+    }
+
+    .card.memocard {
+        width: 30%;
+        height: auto;
+    }
+}
