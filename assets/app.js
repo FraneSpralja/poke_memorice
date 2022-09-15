@@ -13,65 +13,71 @@ let parCard = []
 
 const memoCards = [
     {
-        id: 1,
-        contenido: 'A',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 2,
-        contenido: 'B',
+        id: Math.floor(Math.random() * 905),
+
     },
     {
-        id: 3,
-        contenido: 'C',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 4,
-        contenido: 'D',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 5,
-        contenido: 'F',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 6,
-        contenido: 'G',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 7,
-        contenido: 'H',
+        id: Math.floor(Math.random() * 905),
     },
     {
-        id: 8,
-        contenido: 'I',
+        id: Math.floor(Math.random() * 905),
     },
 ]
 
 function crearBloques() {
+    const newMemoCards = fetchPokemon(memoCards)
+
+    console.log(newMemoCards)
+
     const row = document.createElement('div')
     row.classList.add('row');
+    
+    const clonMemoCard = [...newMemoCards];
+    
+    const memorice = [...newMemoCards, ...clonMemoCard];
 
-    fetchPokemon()
-    
-    const clonMemoCard = [...memoCards];
-    
-    const memorice = [...memoCards, ...clonMemoCard];
+    // console.log(memorice)
     
     randomizeMemoriceArr(memorice)
+    // console.log(memorice)
+
+    setTimeout(() => {        
+        memorice.forEach((card) => {
+            // console.log(card)
     
-    memorice.forEach((card) => {
-        const cardDiv = document.createElement('div');
-        cardDiv.dataset.id = card.id;
-        cardDiv.textContent = card.contenido;
-        cardDiv.classList.add('card', 'memocard');
+            const cardDiv = document.createElement('div');
+            cardDiv.dataset.id = card.id;
+    
+            const cardImg = document.createElement('img');
+            cardImg.src = card.src;
+            cardDiv.classList.add('card', 'memocard');
+            cardDiv.appendChild(cardImg);
+            row.appendChild(cardDiv);
+    
+            mainContainer.appendChild(row)
+            const arrayCards = document.querySelectorAll('.memocard');
+            selectCard(arrayCards)
+        })
+    }, 700)
 
-        row.appendChild(cardDiv);
 
-    })
-    mainContainer.appendChild(row)
 
-    const arrayCards = document.querySelectorAll('.memocard');
 
-    selectCard(arrayCards)
 }
 
 const cardArrMemo = []
@@ -84,6 +90,8 @@ let cardUno = 0 ;
 let cardDos = 0 ;
 
 function selectCard(arr) {
+
+    // console.log(arr)
     
     arr.forEach((card) => {
         card.onclick = function() {
@@ -163,6 +171,23 @@ function mensaje(mensaje, tipo) {
     mainContainer.appendChild(modal);
 }
 
-function fetchPokemon() {
-    console.log('Desde fetch Pokemon')
+function fetchPokemon(arr) {
+    // 905
+    const url = ("https://pokeapi.co/api/v2/pokemon/")
+    
+    for(let i = 0; i < arr.length; i++){ 
+        const card = arr[i];
+        const { id } = card;
+        
+
+        fetch(`${url}${id}`)
+            .then(resp => resp.json())
+            .then(data => {
+            card.src = data.sprites.other['official-artwork'].front_default;
+        })
+    }
+
+    const newArray = [...arr];
+
+    return newArray;
 }

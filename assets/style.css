@@ -20,17 +20,35 @@
     font-size: 150px;
     cursor: pointer;
     border-radius: 7px;
-    background: #000;
+    background: url(img/logo_pokebola.png);
+    background-size: auto 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card.memocard img {
+    visibility: hidden;
+    width: 100%;
 }
 
 .card-uno, .card-dos {
     background: #f2f2f2 !important;
+    pointer-events: none;
+}
+
+.card-uno img, .card-dos img {
+    visibility: visible !important;
+    display: block;
 }
 
 .match {
-    background: red !important;
+    background: #f7f3f1 !important;
     pointer-events: none;
     cursor: none;
+}
+
+.match img {
+    visibility: visible !important;
 }
 
 .modal {
