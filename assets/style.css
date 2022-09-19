@@ -96,4 +96,9 @@ button.btn-close {
         width: 30%;
         height: auto;
     }
+
+    .mensajeDiv {
+        flex: 0 0 70%;
+        height: 200px;
+    }
 }
